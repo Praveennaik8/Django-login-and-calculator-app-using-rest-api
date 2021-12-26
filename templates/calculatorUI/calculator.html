@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+	.header{
+		background-color: rgb(123, 201, 231);
+		width: 290px;
+		height: 60px;
+		
+	}
+	input[type=button]{
+		
+		width: 70px;
+		height: 70px;
+		color: black;
+		background-color: aqua;
+		
+		font-size: 1.5em;
+		
+	}
+	input[type=submit]{
+		
+		width: 70px;
+		height: 70px;
+		color: black;
+		background-color: aqua;
+		
+		font-size: 1.5em;
+		
+	}
+	tr{
+		width: 10px;
+		height: 10px;
+	}
+	#result{
+		width: 285px;
+		height: 60px;
+		
+		font-size: 1.5em;
+		
+		border-color: black;
+		border-width: 3px;
+		
+
+	}
+	table{
+		background-color: rgb(123, 201, 231);
+	}
+
+	#container{
+		background-color: rgb(252, 239, 59);
+		width: 320px;
+		height: 500px; 
+	}
+</style>
+<script type="text/javascript">
+	var res= 0,num2 = 0;
+	function dis(val)
+	{
+		document.getElementById("result").value+=val
+	}
+	
+	
+	function solve()
+	{
+		let x = document.getElementById("result").value
+		let y = eval(x)
+		document.getElementById("result").value = y
+	}
+	
+	//function that clear the display
+	function clr()
+	{
+		document.getElementById("result").value = ""
+	}
+
+
+</script>
+<title>Calculator</title>
+<center>
+<div class="container">
+	
+	<br>
+	
+	<div id=container>
+		<br>
+		<h1 class="header">Calculator</h1>
+		<form name="myForm" method="POST" action="/calculator/"> 
+			{% csrf_token %}
+			<!-- <!-- <br> <br> -->
+			<input type="text" name="result" id="result" value="{{result}}" >
+			<table>
+				
+				<tr>
+					<td><input  type="button"  value="1"  onclick="dis('1')" ></td>
+					<td><input  type="button"  value="2" onclick="dis('2')"></td>
+					<td><input  type="button"  value="3" onclick="dis('3')"></td>
+					<td><input  type="button"  value="C" onclick="clr()"></td>
+				</tr>
+				<tr>
+					<td><input  type="button"  value="4" onclick="dis('4')"></td>
+					<td><input  type="button"  value="5" onclick="dis('5')"></td>
+					<td><input  type="button"  value="6" onclick="dis('6')"></td>
+					<td><input  type="button"  value="+" onclick="dis('+')"></td>
+				</tr>
+				<tr>
+					<td><input  type="button"  value="7" onclick="dis('7')"></td>
+					<td><input  type="button"  value="8" onclick="dis('8')"></td>
+					<td><input  type="button"  value="9" onclick="dis('9')"></td>
+					<td><input  type="button"  value="-" onclick="dis('-')"></td>
+				</tr>
+				<tr>
+					<td><input  type="button"  value="0" onclick="dis('0')"></td>
+					<td><input  type="button"  value="/" onclick="dis('/')"></td>
+					<td><input  type="button"  value="*" onclick="dis('*')"></td>
+					<td><input  type="submit"  value="=" ></td>
+				</tr>
+				
+			</table>
+			
+
+		</form>
+	</div>
+</div>
+</center>
+
+{% endblock %}

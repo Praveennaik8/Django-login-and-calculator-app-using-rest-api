@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    tr, td {
+  border-color: #96D4D4;
+  border-style:solid;
+  text-align: center;
+  padding: 5px;
+  table-layout: fixed;
+}
+thead{
+  color: blue;
+}
+</style>
+<title>History</title>
+<div class="container">
+    <center>
+        <h1>Calculation history</h1>
+        <br>
+        <table >
+            <tr>
+                <td><h2>Expression</h2></td>
+                <td><h2>Result</h2></td>
+            </tr>
+            {% for key, value in result.items %}
+            
+            <tr>
+                <td><h4>{{key}}</h4></td>
+                <td><h4>{{value}}</h4></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+	
+</div>
+
+{% endblock %}
